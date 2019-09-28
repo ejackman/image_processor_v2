@@ -1,0 +1,23 @@
+{
+  "name": "image-uploader-v2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dist": "tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "aws-sdk": "^2.538.0",
+    "chokidar": "^3.1.1",
+    "jszip": "^3.2.2",
+    "s3": "^4.4.0"
+  },
+  "devDependencies": {
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^12.7.8"
+  }
+}
