@@ -5,12 +5,7 @@ import S3Upload from "./models/s3-upload";
 
 class App {
 
-    process_file(file){
-        if(file.indexOf('.json') > -1){
-            console.log(config.source.dirIn + file);
-            this.process_asn(config.source.dirIn + file);
-        }
-    }
+
 
     process_asn(file: string){
         try {
@@ -54,7 +49,13 @@ class App {
         });
         // });
     }
-
+    
+    process_file(file){
+        if(file.indexOf('.json') > -1){
+            console.log(config.source.dirIn + file);
+            this.process_asn(config.source.dirIn + file);
+        }
+    }
 }
 
 export default new App;
