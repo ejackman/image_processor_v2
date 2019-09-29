@@ -34,10 +34,10 @@ class App {
     }
     cleanup(name, asn_file) {
         asn_file.pictures.forEach(file => {
-            fs_1.createReadStream(file).pipe(fs_1.createWriteStream(file.replace(config_1.default.source.dirIn, config_1.default.source.dirOut)));
-            fs_1.unlinkSync(config_1.default.source.dirIn + file);
-            console.log("could not delete file:", file);
+            fs_1.createReadStream(config_1.default.source.dirIn + file).pipe(fs_1.createWriteStream(config_1.default.source.dirOut + file));
+            // unlinkSync(config.source.dirIn+ file);
         });
+        // unlinkSync(name);
     }
     process_file(file) {
         if (file.indexOf('.json') > -1) {

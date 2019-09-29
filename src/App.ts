@@ -38,10 +38,10 @@ class App {
 
     cleanup(name,asn_file: Asn){
         asn_file.pictures.forEach( file => {
-            createReadStream(file).pipe(createWriteStream(file.replace(config.source.dirIn,config.source.dirOut)));
-            unlinkSync(config.source.dirIn+ file);
-            console.log("could not delete file:", file);
+            createReadStream(config.source.dirIn + file).pipe(createWriteStream(config.source.dirOut + file));
+            // unlinkSync(config.source.dirIn+ file);
         });
+        // unlinkSync(name);
     }
 
     process_file(file){
