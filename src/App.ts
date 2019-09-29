@@ -45,6 +45,7 @@ class App {
     }
 
     process_file(file){
+        console.log(file, file.indexOf('.json'), file.length);
         if(file.indexOf('.json') > -1){
             console.log(file);
             this.process_asn(file);
