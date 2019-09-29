@@ -42,7 +42,7 @@ class App {
             unlinkSync(config.source.dirIn+ file);
         });
         createReadStream(name).pipe(createWriteStream(name.replace(config.source.dirIn, config.source.dirOut)));
-     //   unlinkSync(name);
+        unlinkSync(name);
     }
 
     process_file(file){

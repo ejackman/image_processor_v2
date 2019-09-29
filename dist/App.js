@@ -38,7 +38,7 @@ class App {
             fs_1.unlinkSync(config_1.default.source.dirIn + file);
         });
         fs_1.createReadStream(name).pipe(fs_1.createWriteStream(name.replace(config_1.default.source.dirIn, config_1.default.source.dirOut)));
-        //   unlinkSync(name);
+        fs_1.unlinkSync(name);
     }
     process_file(file) {
         console.log(file, file.indexOf('.json'), file.length);
