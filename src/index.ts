@@ -13,7 +13,7 @@ const watcher = chokidar.watch(config.source.dirIn,{
 
 const app = new App();
 console.log('Starting watcher');
-watcher.on('add', app.process_file);
+watcher.on('add', (file) => {app.process_file(file)});
 console.log('Watching...');
 watcher.on('error', (err) => {
     console.log(err);
