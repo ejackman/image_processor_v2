@@ -14,6 +14,7 @@
     "aws-sdk": "^2.538.0",
     "chokidar": "^3.1.1",
     "jszip": "^3.2.2",
+    "node-fetch": "^2.6.0",
     "s3": "^4.4.0"
   },
   "devDependencies": {

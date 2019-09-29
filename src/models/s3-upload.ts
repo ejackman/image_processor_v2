@@ -1,6 +1,7 @@
 import config from "../config";
 import * as s3 from 's3';
 import * as AWS from 'aws-sdk';
+import * as fetch from 'node-fetch';
 
 class S3Upload{
     upload(name,asn_file,zip,cb){

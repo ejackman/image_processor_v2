@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const config_1 = require("../config");
 const s3 = require("s3");
 const AWS = require("aws-sdk");
+const fetch = require("node-fetch");
 class S3Upload {
     upload(name, asn_file, zip, cb) {
         let options = {
