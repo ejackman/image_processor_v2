@@ -15,7 +15,7 @@ class App {
             console.log('name:', name,  "asn file:", asn_file);
             zip.file(name, JSON.stringify(asn_file));
             asn_file.pictures.forEach((file_name: string) => {
-                const file = readFileSync(config.source.dirIn + file_name);
+                const file = readFileSync(file_name);
                 zip.file(file_name, file);
             });
             this.finish(name, asn_file, zip);
@@ -38,7 +38,7 @@ class App {
 
     cleanup(name,asn_file: Asn){
         asn_file.pictures.forEach( file => {
-            createReadStream(config.source.dirIn + file).pipe(createWriteStream(config.source.dirOut + file));
+            createReadStream(file).pipe(createWriteStream(file.replace(config.source.dirIn,config.source.dirOut)));
             unlinkSync(config.source.dirIn+ file);
             console.log("could not delete file:", file);
         });
@@ -47,7 +47,7 @@ class App {
     process_file(file){
         if(file.indexOf('.json') > -1){
             console.log(file);
-            this.process_asn(config.source.dirIn + file);
+            this.process_asn(file);
         }
     }
 }
