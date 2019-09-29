@@ -37,17 +37,11 @@ class App {
     }
 
     cleanup(name,asn_file: Asn){
-        // just cleanup file
-
         asn_file.pictures.forEach( file => {
             createReadStream(config.source.dirIn + file).pipe(createWriteStream(config.source.dirOut + file));
             unlinkSync(config.source.dirIn+ file);
-            // ftp.delete(config.source.path + file, err => {
-            // if(err)
             console.log("could not delete file:", file);
-            // });
         });
-        // });
     }
 
     process_file(file){
@@ -58,4 +52,4 @@ class App {
     }
 }
 
-export default new App;
+export default App;

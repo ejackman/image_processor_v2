@@ -11,8 +11,9 @@ const watcher = chokidar.watch(config_1.default.source.dirIn, {
         pollInterval: 100
     }
 });
+const app = new App_1.default();
 console.log('Starting watcher');
-watcher.on('add', App_1.default.process_file);
+watcher.on('add', app.process_file);
 console.log('Watching...');
 watcher.on('error', (err) => {
     console.log(err);

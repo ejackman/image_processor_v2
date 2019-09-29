@@ -33,16 +33,11 @@ class App {
         return s3.upload(name, asn_file, zip, this.cleanup);
     }
     cleanup(name, asn_file) {
-        // just cleanup file
         asn_file.pictures.forEach(file => {
             fs_1.createReadStream(config_1.default.source.dirIn + file).pipe(fs_1.createWriteStream(config_1.default.source.dirOut + file));
             fs_1.unlinkSync(config_1.default.source.dirIn + file);
-            // ftp.delete(config.source.path + file, err => {
-            // if(err)
             console.log("could not delete file:", file);
-            // });
         });
-        // });
     }
     process_file(file) {
         if (file.indexOf('.json') > -1) {
@@ -51,5 +46,5 @@ class App {
         }
     }
 }
-exports.default = new App;
+exports.default = App;
 //# sourceMappingURL=App.js.map
