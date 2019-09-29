@@ -49,7 +49,7 @@ class App {
         });
         // });
     }
-    
+
     process_file(file){
         if(file.indexOf('.json') > -1){
             console.log(config.source.dirIn + file);
