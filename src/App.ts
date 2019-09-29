@@ -15,7 +15,7 @@ class App {
             console.log('name:', name,  "asn file:", asn_file);
             zip.file(name, JSON.stringify(asn_file));
             asn_file.pictures.forEach((file_name: string) => {
-                const file = readFileSync(file_name);
+                const file = readFileSync(config.source.dirIn + file_name);
                 zip.file(file_name, file);
             });
             this.finish(name, asn_file, zip);
