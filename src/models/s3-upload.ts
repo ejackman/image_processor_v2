@@ -15,37 +15,37 @@ class S3Upload{
         console.log("create owd api request:", asn_file.typeId);
         fetch("http://" + config.api.base_url + "/asn/" + asn_file.typeId, { headers : options.headers })
             .then( res => {
-                console.log('Response:',res.body);
-                console.log("S3:", s3);
                 return res.json();
                 // s3.ListBuckets((err,buckets) => {
                 // 	console.log("Buckets:",buckets)
                 // });
             }).then( data => {
             console.log("Data:",data);
-            fetch("http://" + config.api.base_url + "/client/" + data.data[0].client_fkey)
-                .then( res => {
-                    return res.json();
-                }).then( data => {
-                console.log("company",data.data[0].company_name.replace(/([^a-z0-9]+)/gi, '-'));
+            if(data.length > 0) {
+                fetch("http://" + config.api.base_url + "/client/" + data.data[0].client_fkey)
+                    .then(res => {
+                        return res.json();
+                    }).then(data => {
+                    console.log("company", data.data[0].company_name.replace(/([^a-z0-9]+)/gi, '-'));
 
-                let params = {
-                    Bucket 	: "owd.s3.imagepacks",
-                    Body 	: zip.generateNodeStream({type:'nodebuffer', streamFiles:true}),
-                    Key 	: this.get_folder(asn_file) + "/" + data.data[0].company_name.replace(/([^a-z0-9]+)/gi, '-') + "." + name + ".zip",
+                    let params = {
+                        Bucket: "owd.s3.imagepacks",
+                        Body: zip.generateNodeStream({type: 'nodebuffer', streamFiles: true}),
+                        Key: this.get_folder(asn_file) + "/" + data.data[0].company_name.replace(/([^a-z0-9]+)/gi, '-') + "." + name + ".zip",
 
-                };
+                    };
 
-                let upload = new AWS.S3.ManagedUpload({params:params,queueSize:1})
-                    .on("httpUploadProgress", progress => {
-                        console.log("Progress:", progress);
-                    })
-                    .send((err,data) => {
-                        if(err) return console.log("Error:", err);
-                        console.log("Upload:", data);
-                        cb(name,asn_file);
-                    });
-            });
+                    let upload = new AWS.S3.ManagedUpload({params: params, queueSize: 1})
+                        .on("httpUploadProgress", progress => {
+                            console.log("Progress:", progress);
+                        })
+                        .send((err, data) => {
+                            if (err) return console.log("Error:", err);
+                            console.log("Upload:", data);
+                            cb(name, asn_file);
+                        });
+                });
+            }
         });
 
         // let req = http.request(options, response => {
