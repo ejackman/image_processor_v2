@@ -41,7 +41,7 @@ class App {
     }
     process_file(file) {
         if (file.indexOf('.json') > -1) {
-            console.log(config_1.default.source.dirIn + file);
+            console.log(file);
             this.process_asn(config_1.default.source.dirIn + file);
         }
     }
