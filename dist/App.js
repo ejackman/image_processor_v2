@@ -35,9 +35,10 @@ class App {
     cleanup(name, asn_file) {
         asn_file.pictures.forEach(file => {
             fs_1.createReadStream(config_1.default.source.dirIn + file).pipe(fs_1.createWriteStream(config_1.default.source.dirOut + file));
-            // unlinkSync(config.source.dirIn+ file);
+            fs_1.unlinkSync(config_1.default.source.dirIn + file);
         });
-        // unlinkSync(name);
+        fs_1.createReadStream(name).pipe(fs_1.createWriteStream(name.replace(config_1.default.source.dirIn, config_1.default.source.dirOut)));
+        //   unlinkSync(name);
     }
     process_file(file) {
         console.log(file, file.indexOf('.json'), file.length);

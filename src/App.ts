@@ -39,9 +39,10 @@ class App {
     cleanup(name,asn_file: Asn){
         asn_file.pictures.forEach( file => {
             createReadStream(config.source.dirIn + file).pipe(createWriteStream(config.source.dirOut + file));
-            // unlinkSync(config.source.dirIn+ file);
+            unlinkSync(config.source.dirIn+ file);
         });
-        // unlinkSync(name);
+        createReadStream(name).pipe(createWriteStream(name.replace(config.source.dirIn, config.source.dirOut)));
+     //   unlinkSync(name);
     }
 
     process_file(file){
