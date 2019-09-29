@@ -14,7 +14,7 @@ const config = {
         key: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsImlhdCI6MTUwMzkzNjA5M30.JtoaoN73CpR6YUvlZayqplWtxfnFH9rsZ3iCYBf0Go4"
     },
     api: {
-        base_url: "secured.api.owd.com",
+        base_url: "testing.api.owd.com",
         key: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoidXNlciIsImlhdCI6MTUwMzkzNjA5M30.JtoaoN73CpR6YUvlZayqplWtxfnFH9rsZ3iCYBf0Go4"
     }
 };
